@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Teacher Portal - Check In</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#727785",
+                      "primary-fixed": "#d8e2ff",
+                      "on-tertiary-fixed-variant": "#783100",
+                      "tertiary-container": "#c55500",
+                      "surface-container": "#ecedf7",
+                      "secondary-fixed": "#e2e2e2",
+                      "on-secondary-container": "#616363",
+                      "inverse-on-surface": "#eff0fa",
+                      "on-primary-container": "#ffffff",
+                      "surface": "#f9f9ff",
+                      "on-surface-variant": "#414754",
+                      "surface-variant": "#e0e2ec",
+                      "on-tertiary-container": "#0e0200",
+                      "surface-container-highest": "#e0e2ec",
+                      "secondary-fixed-dim": "#c6c6c7",
+                      "secondary": "#5d5f5f",
+                      "primary-container": "#1a73e8",
+                      "on-primary-fixed": "#001a41",
+                      "primary-fixed-dim": "#adc7ff",
+                      "primary": "#005bbf",
+                      "tertiary-fixed-dim": "#ffb691",
+                      "on-error": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#f2f3fd",
+                      "on-tertiary-fixed": "#341100",
+                      "on-surface": "#191c23",
+                      "error-container": "#ffdad6",
+                      "tertiary": "#9e4300",
+                      "on-tertiary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "inverse-primary": "#adc7ff",
+                      "surface-container-high": "#e6e8f2",
+                      "surface-tint": "#005bc0",
+                      "surface-dim": "#d8d9e3",
+                      "secondary-container": "#dfe0e0",
+                      "error": "#ba1a1a",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed-variant": "#454747",
+                      "on-background": "#191c23",
+                      "tertiary-fixed": "#ffdbcb",
+                      "inverse-surface": "#2d3038",
+                      "on-primary-fixed-variant": "#004493",
+                      "surface-bright": "#f9f9ff",
+                      "outline-variant": "#c1c6d6",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "background": "#f9f9ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "container-max-width": "1280px",
+                      "margin-desktop": "32px",
+                      "margin-mobile": "16px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "display-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .check-in-glow {
+            box-shadow: 0 0 20px rgba(26, 115, 232, 0.3);
+            animation: pulse-shadow 2s infinite;
+        }
+        @keyframes pulse-shadow {
+            0% { box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(26, 115, 232, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(26, 115, 232, 0); }
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden pb-24">
+<!-- Top Bar Component -->
+<header class="fixed top-0 left-0 right-0 h-16 bg-surface-container-lowest border-b border-outline-variant px-margin-mobile flex items-center justify-between z-50">
+<div class="flex items-center gap-3">
+<img alt="EduSync Academy Logo" class="h-10 w-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDef2YwIvaKNxGqiZt4oo6w4PN2PsTzcifQp4WYeozvLG-rNOlVG8m3PXama0xdq2RtCahIIUED6OPOkqG9G00kuKr6fwzY6BKHXea4UtNIc6PQISYlBmLAFdJgDSyiZDOb3wDaIW5kK58ypDkIwQQlwK2444UDyt2xOS3drQU-c56NTxNB1YJADH-xrqkUfR5iVLjPZD3zQiTyasMpgFHiHWePbNskYcJ_o5xCNiBCbuyiQRa9nZbqbwkO1n6Vh3xk33XQGC1GCOA"/>
+<div class="flex flex-col">
+<span class="font-headline-md text-primary leading-none text-headline-md">EduSync</span>
+<span class="font-label-md text-on-surface-variant text-label-md">Teacher Portal</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full border-2 border-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional portrait of a female teacher in a brightly lit modern office setting. She has a friendly, confident expression and is wearing professional business casual attire. The background is softly blurred with clean corporate colors of white and soft blue, maintaining a professional SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY7Cxb_zvjQQfccy9VEuuR5z821pcnESRbgCmfkiik5Ns3WFy2ZtUpZfNBFmcnWiaZ8pFOCpQwA1vqFQZWXjMZV2hrD2FmumPf1Pu2wpr096b_REccbDcU3A31Gsl3Ic8HefqqhubNTncB8Ghm_KgYbxkWi26Ydwlq-EGMNJhQB9J1Bdt2Vjkpp2norh6S64pUMjEGU1OKeWTIRXcj-31Bo3jZII_wlqY7pTXE2PyMJdEcGvSK7cvbQ85exmWU-pjsGHpWo76KBUo"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="mt-20 px-margin-mobile">
+<!-- Welcome Section -->
+<section class="mt-6 mb-8">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-1">Good morning, Ms. Sarah</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ready for your morning assembly?</p>
+</section>
+<!-- Primary Action: Check In -->
+<section class="mb-8">
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant flex flex-col items-center justify-center text-center">
+<div class="mb-4">
+<div class="w-32 h-32 rounded-full bg-primary-container flex flex-col items-center justify-center text-on-primary-container cursor-pointer check-in-glow active:scale-95 transition-transform" id="checkInButton">
+<span class="material-symbols-outlined text-4xl mb-1" style="font-variation-settings: 'FILL' 1;">person_check</span>
+<span class="font-label-md text-label-md font-bold">Check In</span>
+</div>
+</div>
+<!-- Location Status -->
+<div class="flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-outline-variant shadow-sm">
+<span class="material-symbols-outlined text-sm text-green-600" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="font-label-md text-label-md text-on-surface">Campus Verified: Main Hall</span>
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+</div>
+<div class="mt-4 text-center">
+<p class="font-label-md text-label-md text-on-surface-variant">Current Time: <span class="font-bold" id="currentTime">08:14 AM</span></p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Shift starts at 08:30 AM</p>
+</div>
+</div>
+</section>
+<!-- Stats Bento Grid -->
+<section class="bento-grid mb-8">
+<div class="bg-white p-4 rounded-xl border border-outline-variant">
+<div class="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-green-700 text-lg">calendar_today</span>
+</div>
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-1">Weekly Status</h3>
+<p class="font-headline-md text-headline-md text-on-surface">98%</p>
+</div>
+<div class="bg-white p-4 rounded-xl border border-outline-variant">
+<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-primary text-lg">schedule</span>
+</div>
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-1">Late Marks</h3>
+<p class="font-headline-md text-headline-md text-on-surface">0</p>
+</div>
+</section>
+<!-- Upcoming Schedule -->
+<section class="mb-8">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">Today's Classes</h2>
+<button class="font-label-md text-label-md text-primary font-bold">View Schedule</button>
+</div>
+<div class="space-y-3">
+<div class="bg-white p-4 rounded-xl border border-outline-variant flex items-center gap-4 hover:bg-surface-container-low transition-colors">
+<div class="flex flex-col items-center justify-center w-12 border-r border-outline-variant pr-4">
+<span class="font-label-md text-label-md text-on-surface font-bold">09:00</span>
+<span class="font-label-md text-label-md text-on-surface-variant">AM</span>
+</div>
+<div class="flex-1">
+<h4 class="font-body-md text-body-md font-bold text-on-surface">Advanced Mathematics</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Grade 10-B • Room 302</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+<div class="bg-white p-4 rounded-xl border border-outline-variant flex items-center gap-4 hover:bg-surface-container-low transition-colors">
+<div class="flex flex-col items-center justify-center w-12 border-r border-outline-variant pr-4">
+<span class="font-label-md text-label-md text-on-surface font-bold">11:30</span>
+<span class="font-label-md text-label-md text-on-surface-variant">AM</span>
+</div>
+<div class="flex-1">
+<h4 class="font-body-md text-body-md font-bold text-on-surface">Calculus Intro</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Grade 11-A • Science Lab</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Component -->
+<nav class="fixed bottom-0 left-0 right-0 h-16 bg-surface-container-lowest border-t border-outline-variant flex items-center justify-around px-2 z-50">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center w-16 gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-[10px] uppercase tracking-wider font-bold">Home</span>
+</a>
+<!-- History -->
+<a class="flex flex-col items-center justify-center w-16 gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-md text-[10px] uppercase tracking-wider">History</span>
+</a>
+<!-- Leave -->
+<a class="flex flex-col items-center justify-center w-16 gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">event_busy</span>
+<span class="font-label-md text-[10px] uppercase tracking-wider">Leave</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center w-16 gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-[10px] uppercase tracking-wider">Profile</span>
+</a>
+</nav>
+<script>
+        // Update current time display
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const displayHours = hours % 12 || 12;
+            const displayMinutes = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('currentTime').innerText = `${displayHours}:${displayMinutes} ${ampm}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // Check-in interaction
+        const checkBtn = document.getElementById('checkInButton');
+        checkBtn.addEventListener('click', () => {
+            const btnContent = checkBtn.innerHTML;
+            checkBtn.innerHTML = `<span class="material-symbols-outlined animate-spin text-4xl">sync</span>`;
+            
+            setTimeout(() => {
+                checkBtn.classList.remove('bg-primary-container', 'check-in-glow');
+                checkBtn.classList.add('bg-green-500');
+                checkBtn.innerHTML = `
+                    <span class="material-symbols-outlined text-4xl mb-1" style="font-variation-settings: 'FILL' 1;">done_all</span>
+                    <span class="font-label-md text-label-md font-bold">In 08:14</span>
+                `;
+            }, 1200);
+        });
+    </script>
+</body></html>
